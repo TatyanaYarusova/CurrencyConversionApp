@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.currencyconversionapp.R
 import com.example.currencyconversionapp.databinding.FragmentMainBinding
+import com.example.currencyconversionapp.domain.entity.CurrencyConversion
 import com.example.currencyconversionapp.presentation.MainViewModel
+import com.example.currencyconversionapp.presentation.state.ErrorEvent
+import com.example.currencyconversionapp.presentation.state.ScreenState
 
 
 class MainFragment : Fragment() {
@@ -40,10 +42,40 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.state.observe(viewLifecycleOwner, ::renderState)
+    }
+
+    private fun renderState(state: ScreenState<CurrencyConversion>) {
+        when (state) {
+            is ScreenState.Initial -> initView()
+            is ScreenState.Content -> renderContent(state.content)
+            is ScreenState.Error -> renderError(state.errorType)
+            else -> {}
+        }
+    }
+
+    private fun renderContent(content: CurrencyConversion) {
+        addFragment(CurrencyConversionFragment.newInstance(content))
+    }
+
+    private fun renderError(errorType: ErrorEvent) {
+        when(errorType) {
+            is ErrorEvent.ServerError -> {}
+            is ErrorEvent.NetworkError -> {}
+        }
     }
 
     private fun initView() {
+        initBaseCurrencySelect()
+        initCurrencySelect()
+        initButton()
+    }
+
+    private fun initBaseCurrencySelect() {
         val selectBaseCurrency = binding.currencyBaseTF
 
         val adapterBaseCurrency = ArrayAdapter(
@@ -67,6 +99,9 @@ class MainFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
         }
+    }
+
+    private fun initCurrencySelect() {
         val selectCurrency = binding.currencyTF
         val adapterCurrency = ArrayAdapter(
             requireContext(),
@@ -89,19 +124,28 @@ class MainFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
         }
+    }
 
+    private fun initButton() {
         val button = binding.buttonConvert
         button.setOnClickListener {
             amount = binding.amountTI.text.toString().toDouble()
             viewModel.conversion(baseCurrency, currency, amount)
         }
-
-
-
-
-
-
     }
+
+    private fun addFragment(fragment: Fragment) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 
     companion object {
         @JvmStatic

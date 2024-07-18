@@ -2,42 +2,10 @@
     <string name="app_name">CurrencyConversionApp</string>
     <string name="amountTF_hint">Введите сумму</string>
     <string name="currencyTF_hint">Выберите валюту для конвертации</string>
+    <string name="text_convert_button">Конвертировать</string>
+    <string name="title">ВалютКонвертер</string>
 
-    <!--    <string-array name="currencies">-->
-    <!--        <item>AED</item>-->
-    <!--        <item>AFN</item>-->
-    <!--        <item>ALL</item>-->
-    <!--        <item>AMD</item>-->
-    <!--        <item>ANG</item>-->
-    <!--        <item>AOA</item>-->
-    <!--        <item>ARS</item>-->
-    <!--        <item>AUD</item>-->
-    <!--        <item>AWG</item>-->
-    <!--        <item>AZN</item>-->
-    <!--        <item>BAM</item>-->
-    <!--        <item>BBD</item>-->
-    <!--        <item>BDT</item>-->
-    <!--        <item>BGN</item>-->
-    <!--        <item>BHD</item>-->
-    <!--        <item>BIF</item>-->
-    <!--        <item>BMD</item>-->
-    <!--        <item>BND</item>-->
-    <!--        <item>BOB</item>-->
-    <!--        <item>BRL</item>-->
-    <!--        <item>BSD</item>-->
-    <!--        <item>BTN</item>-->
-    <!--        <item>BWP</item>-->
-    <!--        <item>BYR</item>-->
-    <!--        <item>BZD</item>-->
-    <!--        <item>CAD</item>-->
-    <!--        <item>CDF</item>-->
-    <!--        <item>CHF</item>-->
-    <!--        <item>CHW</item>-->
-    <!--        <item>CLF</item>-->
-    <!--        <item>CLP</item>-->
-    <!--        <item>CNY</item>-->
 
-    <!--    </string-array>-->
     <string-array name="currency">
         <item>USD</item>
         <item>EUR</item>

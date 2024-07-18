@@ -4,44 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:layout_gravity="center"
     tools:context=".ui.MainFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:id="@+id/currency_baseTF"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/currency_baseTF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
 
-        <!--            android:hint="@string/currencyTF_hint"-->
+                    android:hint="@string/currencyTF_hint"
 
-        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-        <!--            >-->
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
 
-        <!--            <AutoCompleteTextView-->
-        <!--                android:id="@+id/currency_baseTI"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:inputType="none"-->
-        <!--                />-->
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    >
 
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-        <Spinner
-            android:id="@+id/currency_baseTF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/currency"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+                    <AutoCompleteTextView
+                        android:id="@+id/currency_baseTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:dropDownHeight="@dimen/drop_down_h"
+                        android:inputType="none"
+                        />
 
-            app:layout_constraintTop_toTopOf="parent">
-
-        </Spinner>
+                </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/amountTF"
@@ -50,47 +47,47 @@
             android:hint="@string/amountTF_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currency_baseTF"
 
-            app:layout_constraintTop_toBottomOf="@id/currency_baseTF">
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/amountTI"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxLines="1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:id="@+id/currencyTF"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/amountTF"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/currencyTF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/amountTF"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
 
-        <!--            android:hint="@string/currencyTF_hint"-->
+                    android:hint="@string/currencyTF_hint"
 
-        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-        <!--            >-->
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
 
-        <!--            <AutoCompleteTextView-->
-        <!--                android:id="@+id/currencyTI"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:inputType="none"-->
-        <!--                />-->
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    >
 
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+                    <AutoCompleteTextView
+                        android:id="@+id/currencyTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:dropDownHeight="@dimen/drop_down_h"
+                        android:inputType="none"
+                        />
 
-        <Spinner
-            android:id="@+id/currencyTF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/currency"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toBottomOf="@id/amountTF"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/button_convert"
@@ -99,9 +96,28 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/currencyTF" />
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:text="@string/text_convert_button"
+            android:textColor="@color/text_button_color"
+            android:textSize="@dimen/tz_button"
+
+            android:layout_margin="@dimen/margin_medium"
+            android:background="@drawable/button"
+            android:theme="@style/Button.color"
+             />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="@dimen/pb_size"
+        android:layout_height="@dimen/pb_size"
+        android:indeterminateTint="@color/pb"
+        android:layout_gravity="center"
+        android:visibility="gone"
+
+        />
 
 </FrameLayout>

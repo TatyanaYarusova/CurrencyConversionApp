@@ -27,10 +27,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun conversion(to: String, from: String, amount: Double) {
         viewModelScope.launch {
+            _state.value = ScreenState.Loading
             try {
                 when (val currencyConversion = getCurrencyRate(from, to, amount)) {
-                    is RequestResult.Success -> _state.value =
-                        ScreenState.Content(currencyConversion.content)
+                    is RequestResult.Success -> {
+                        _state.value = ScreenState.Content(currencyConversion.content)
+                        _state.value = ScreenState.Initial
+                    }
 
                     is RequestResult.Error -> handleError(currencyConversion.requestError)
                 }

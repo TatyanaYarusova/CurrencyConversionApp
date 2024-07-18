@@ -1,6 +1,7 @@
 package com.example.currencyconversionapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,8 +55,13 @@ class MainFragment : Fragment() {
             is ScreenState.Initial -> initView()
             is ScreenState.Content -> renderContent(state.content)
             is ScreenState.Error -> renderError(state.errorType)
-            else -> {}
+            is ScreenState.Loading -> renderLoading()
         }
+    }
+
+    private fun renderLoading() {
+        binding.container.visibility = View.GONE
+        binding.pb.visibility = View.VISIBLE
     }
 
     private fun renderContent(content: CurrencyConversion) {
@@ -63,6 +69,8 @@ class MainFragment : Fragment() {
     }
 
     private fun renderError(errorType: ErrorEvent) {
+        binding.container.visibility = View.VISIBLE
+        binding.pb.visibility = View.GONE
         when(errorType) {
             is ErrorEvent.ServerError -> {}
             is ErrorEvent.NetworkError -> {}
@@ -76,18 +84,15 @@ class MainFragment : Fragment() {
     }
 
     private fun initBaseCurrencySelect() {
-        val selectBaseCurrency = binding.currencyBaseTF
-
+        val selectBaseCurrency = binding.currencyBaseTI
         val adapterBaseCurrency = ArrayAdapter(
             requireContext(),
             R.layout.currency_item,
             resources.getStringArray(R.array.currency)
         )
-        adapterBaseCurrency.setDropDownViewResource(R.layout.currency_item)
-
         selectBaseCurrency.setAdapter(adapterBaseCurrency)
-        selectBaseCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
+        selectBaseCurrency.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
@@ -95,24 +100,20 @@ class MainFragment : Fragment() {
             ) {
                 baseCurrency = resources.getStringArray(R.array.currency)[position]
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
         }
     }
 
     private fun initCurrencySelect() {
-        val selectCurrency = binding.currencyTF
+        val selectCurrency = binding.currencyTI
         val adapterCurrency = ArrayAdapter(
             requireContext(),
             R.layout.currency_item,
             resources.getStringArray(R.array.currency)
         )
-        adapterCurrency.setDropDownViewResource(R.layout.currency_item)
 
         selectCurrency.setAdapter(adapterCurrency)
-        selectCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
+        selectCurrency.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
@@ -120,9 +121,6 @@ class MainFragment : Fragment() {
             ) {
                 currency = resources.getStringArray(R.array.currency)[position]
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
         }
     }
 

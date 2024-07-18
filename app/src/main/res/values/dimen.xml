@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_medium">16dp</dimen>
+
+
+<!--    Button  -->
+    <dimen name="radius">8dp</dimen>
+
+
+<!--    App bar    -->
+    <dimen name="ts_title">20sp</dimen>
+    <dimen name="divider_h">2dp</dimen>
+
+<!--    main fragment   -->
+    <dimen name="drop_down_h">150dp</dimen>
+
+    <dimen name="tz_button">20sp</dimen>
+
+    <dimen name="pb_size">48dp</dimen>
+
+
+
+</resources>

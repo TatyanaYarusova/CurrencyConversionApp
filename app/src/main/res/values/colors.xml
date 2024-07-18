@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bg">#FFFFFF</color>
+    <color name="text">#000000</color>
+    <color name="divider">#F2F3F5</color>
+
+<!--    main page   -->
+    <color name="spinner">#F2F3F5</color>
+    <color name="button_bg">#0077FF</color>
+    <color name="text_button_color">#FFFFFF</color>
+
+    <color name="pb">#0077FF</color>
+
+<!--    conversion page -->
+    <color name="bg_card">#D4D4E0</color>
 </resources>

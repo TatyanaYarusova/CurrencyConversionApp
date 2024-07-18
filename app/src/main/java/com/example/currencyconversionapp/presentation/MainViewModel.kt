@@ -25,7 +25,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val state: LiveData<ScreenState<CurrencyConversion>> = _state
 
 
-    fun conversion(to: String, from: String, amount: Double) {
+    fun conversion(from: String, to: String, amount: Double) {
         viewModelScope.launch {
             _state.value = ScreenState.Loading
             try {

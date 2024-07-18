@@ -4,6 +4,8 @@
     <string name="currencyTF_hint">Выберите валюту для конвертации</string>
     <string name="text_convert_button">Конвертировать</string>
     <string name="title">ВалютКонвертер</string>
+    <string name="tools_text_amount">1000000</string>
+    <string name="tools_text_code">RUB</string>
 
 
     <string-array name="currency">

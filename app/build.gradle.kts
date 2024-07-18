@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
-//    alias(libs.plugins.jetbrains.kotlin.kapt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -58,4 +58,8 @@ dependencies {
 
     //ViewModel
     implementation(libs.viewmodel)
+
+    //Dagger 2
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

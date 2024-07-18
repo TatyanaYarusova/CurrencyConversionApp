@@ -1,33 +1,32 @@
 package com.example.currencyconversionapp.data.repository
 
-import android.util.Log
-import com.example.currencyconversionapp.data.api.ApiFactory
+import com.example.currencyconversionapp.data.api.ApiService
 import com.example.currencyconversionapp.data.mapper.toEntity
 import com.example.currencyconversionapp.domain.entity.CurrencyConversion
 import com.example.currencyconversionapp.domain.entity.result.RequestError
 import com.example.currencyconversionapp.domain.entity.result.RequestResult
 import com.example.currencyconversionapp.domain.repository.CurrencyRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import javax.inject.Inject
 import javax.net.ssl.SSLHandshakeException
 
-class CurrencyRepositoryImpl : CurrencyRepository {
-    private val apiService = ApiFactory.apiService
-
-    companion object {
-        private const val ACCESS_KEY = "cur_live_yVrV510zcUM4qbR2dOs9dg4MvEw0X6V89IaOChA0"
-    }
+class CurrencyRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+    private val ioDispatcher: CoroutineDispatcher,
+    private val key: String
+): CurrencyRepository {
 
     override suspend fun conversion(
         from: String,
         to: String,
         amount: Double
     ): RequestResult<CurrencyConversion> =
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             val response = try {
-                apiService.getCurrencyRate(ACCESS_KEY, from, to)
+                apiService.getCurrencyRate(key, from, to)
             } catch (e: Exception) {
                 return@withContext exceptionRequest(e)
             }

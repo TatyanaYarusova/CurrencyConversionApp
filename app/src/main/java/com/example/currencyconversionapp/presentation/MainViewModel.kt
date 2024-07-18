@@ -1,11 +1,9 @@
 package com.example.currencyconversionapp.presentation
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.currencyconversionapp.data.repository.CurrencyRepositoryImpl
 import com.example.currencyconversionapp.domain.entity.CurrencyConversion
 import com.example.currencyconversionapp.domain.entity.result.RequestError
 import com.example.currencyconversionapp.domain.entity.result.RequestResult
@@ -13,12 +11,11 @@ import com.example.currencyconversionapp.domain.usecase.ConversionCurrencyUseCas
 import com.example.currencyconversionapp.presentation.state.ErrorEvent
 import com.example.currencyconversionapp.presentation.state.ScreenState
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repo = CurrencyRepositoryImpl()
-
-    private val getCurrencyRate = ConversionCurrencyUseCase(repo)
+class MainViewModel @Inject constructor(
+    private val getCurrencyRate: ConversionCurrencyUseCase
+) : ViewModel() {
 
     private val _state: MutableLiveData<ScreenState<CurrencyConversion>> =
         MutableLiveData(ScreenState.Initial)

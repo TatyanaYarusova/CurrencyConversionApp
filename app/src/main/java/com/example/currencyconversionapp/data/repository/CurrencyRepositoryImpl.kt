@@ -1,6 +1,5 @@
 package com.example.currencyconversionapp.data.repository
 
-import android.util.Log
 import com.example.currencyconversionapp.data.api.ApiService
 import com.example.currencyconversionapp.data.mapper.toEntity
 import com.example.currencyconversionapp.domain.entity.CurrencyConversion

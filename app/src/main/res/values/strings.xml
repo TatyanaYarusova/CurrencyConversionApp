@@ -8,6 +8,8 @@
     <string name="tools_text_code">RUB</string>
     <string name="helper_text">Обязательное поле*</string>
 
+    <string name="text_date">*Дата последнего обновления данных: %s. </string>
+
     <string name="error_blank_field">Обязательное поле*</string>
     <string name="error_invalid_input">Некорректный ввод</string>
 

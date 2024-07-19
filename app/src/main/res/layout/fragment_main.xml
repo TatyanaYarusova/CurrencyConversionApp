@@ -8,10 +8,20 @@
     android:layout_gravity="center"
     tools:context=".ui.MainFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/currency_baseTF"
@@ -47,40 +57,40 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/amountTF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/amountTF_hint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/currency_baseTF"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/amountTF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/amountTF_hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/currency_baseTF"
 
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
 
-            app:helperText="@string/helper_text"
-            app:helperTextTextColor="@color/helper_text"
+                    app:helperText="@string/helper_text"
+                    app:helperTextTextColor="@color/helper_text"
 
-            app:errorEnabled="true"
+                    app:errorEnabled="true"
 
-            app:hintTextColor="@color/box_border"
-            app:boxStrokeColor="@color/hint"
-            >
+                    app:hintTextColor="@color/box_border"
+                    app:boxStrokeColor="@color/hint"
+                    >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/amountTI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:maxLength="7"
-                android:digits="1234567890."
-                />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/amountTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:maxLength="7"
+                        android:digits="1234567890."
+                        />
 
-        </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/currencyTF"
@@ -117,26 +127,31 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
         <Button
             android:id="@+id/button_convert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-
-            android:text="@string/text_convert_button"
-            android:textColor="@color/text_button_color"
-            android:textSize="@dimen/tz_button"
-
             android:layout_margin="@dimen/margin_medium"
             android:background="@drawable/button"
-            android:theme="@style/Button.color"
-             />
+            android:text="@string/text_convert_button"
+
+            android:textColor="@color/text_button_color"
+            android:textSize="@dimen/tz_button"
+            android:theme="@style/Button.color" />
+
+    </LinearLayout>
+    
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
     <ProgressBar
         android:id="@+id/pb"

@@ -11,6 +11,8 @@
 
 <!--    main page   -->
     <color name="spinner">#F2F3F5</color>
+    <color name="box_border">#0077FF</color>
+    <color name="hint">#0077FF</color>
     <color name="button_bg">#0077FF</color>
     <color name="text_button_color">#FFFFFF</color>
 

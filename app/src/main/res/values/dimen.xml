@@ -15,7 +15,7 @@
     <dimen name="divider_h">2dp</dimen>
 
 <!--    main fragment   -->
-    <dimen name="drop_down_h">150dp</dimen>
+    <dimen name="drop_down_h">170dp</dimen>
 
     <dimen name="tz_button">20sp</dimen>
 

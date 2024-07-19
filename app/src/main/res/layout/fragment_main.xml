@@ -33,6 +33,8 @@
                     app:helperTextTextColor="@color/helper_text"
 
                     app:errorEnabled="true"
+                    app:hintTextColor="@color/box_border"
+                    app:boxStrokeColor="@color/hint"
                     >
 
                     <AutoCompleteTextView
@@ -54,6 +56,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/currency_baseTF"
 
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
@@ -62,6 +66,9 @@
             app:helperTextTextColor="@color/helper_text"
 
             app:errorEnabled="true"
+
+            app:hintTextColor="@color/box_border"
+            app:boxStrokeColor="@color/hint"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -95,6 +102,9 @@
                     app:helperTextTextColor="@color/helper_text"
 
                     app:errorEnabled="true"
+
+                    app:hintTextColor="@color/box_border"
+                    app:boxStrokeColor="@color/hint"
                     >
 
                     <AutoCompleteTextView

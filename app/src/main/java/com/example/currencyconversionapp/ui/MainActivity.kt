@@ -1,4 +1,4 @@
-package com.example.currencyconversionapp
+package com.example.currencyconversionapp.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.example.currencyconversionapp.ui.MainFragment
+import com.example.currencyconversionapp.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,7 +1,7 @@
 package com.example.currencyconversionapp.ui
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +9,15 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.currencyconversionapp.CurrencyConversionApp
 import com.example.currencyconversionapp.R
 import com.example.currencyconversionapp.databinding.FragmentMainBinding
 import com.example.currencyconversionapp.domain.entity.CurrencyConversion
 import com.example.currencyconversionapp.presentation.MainViewModel
+import com.example.currencyconversionapp.presentation.ViewModelFactory
 import com.example.currencyconversionapp.presentation.state.ErrorEvent
 import com.example.currencyconversionapp.presentation.state.ScreenState
+import javax.inject.Inject
 
 
 class MainFragment : Fragment() {
@@ -26,11 +29,21 @@ class MainFragment : Fragment() {
     private var currency = ""
     private var amount = 0.0
 
-    private lateinit var viewModel: MainViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+    }
+
+    private val component by lazy {
+        (requireActivity().application as CurrencyConversionApp).component
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreateView(

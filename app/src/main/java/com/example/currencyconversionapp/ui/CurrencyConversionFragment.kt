@@ -23,7 +23,8 @@ class CurrencyConversionFragment : Fragment() {
     private fun parseArguments() {
         val args = requireArguments()
         if (args.containsKey(CURRENCY)) {
-            _currencyConversion = (args.getParcelable(CURRENCY) as? CurrencyConversionParcelableModel)?.toEntity()
+            _currencyConversion =
+                (args.getParcelable(CURRENCY) as? CurrencyConversionParcelableModel)?.toEntity()
         } else {
             throw RuntimeException("Currency conversion argument is absent")
         }
@@ -51,7 +52,7 @@ class CurrencyConversionFragment : Fragment() {
     private fun initView() {
         binding.fromAmountText.text = currencyConversion.amount.toString()
         binding.fromCodeText.text = currencyConversion.from
-        binding.toAmountText.text = currencyConversion.result.toString()
+        binding.toAmountText.text = String.format("%.3f", currencyConversion.result).replace(",", ".")
         binding.toCodeText.text = currencyConversion.to
     }
 

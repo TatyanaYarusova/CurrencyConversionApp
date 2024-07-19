@@ -7,6 +7,8 @@
     <color name="text">#000000</color>
     <color name="divider">#F2F3F5</color>
 
+    <color name="helper_text">#0077FF</color>
+
 <!--    main page   -->
     <color name="spinner">#F2F3F5</color>
     <color name="button_bg">#0077FF</color>

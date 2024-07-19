@@ -6,6 +6,13 @@
     <string name="title">ВалютКонвертер</string>
     <string name="tools_text_amount">1000000</string>
     <string name="tools_text_code">RUB</string>
+    <string name="helper_text">Обязательное поле*</string>
+
+    <string name="error_blank_field">Обязательное поле*</string>
+    <string name="error_invalid_input">Некорректный ввод</string>
+
+    <string name="server_error">Произошла ошибка на сервере! Попробуйте попозже.</string>
+    <string name="network_error">Произошла ошибка! Проверьте подключение к сети.</string>
 
 
     <string-array name="currency">

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.currencyconversionapp.CurrencyConversionApp
@@ -17,6 +18,7 @@ import com.example.currencyconversionapp.presentation.MainViewModel
 import com.example.currencyconversionapp.presentation.ViewModelFactory
 import com.example.currencyconversionapp.presentation.state.ErrorEvent
 import com.example.currencyconversionapp.presentation.state.ScreenState
+import com.example.currencyconversionapp.utils.checkNumberFormat
 import javax.inject.Inject
 
 
@@ -84,9 +86,22 @@ class MainFragment : Fragment() {
     private fun renderError(errorType: ErrorEvent) {
         binding.container.visibility = View.VISIBLE
         binding.pb.visibility = View.GONE
-        when(errorType) {
-            is ErrorEvent.ServerError -> {}
-            is ErrorEvent.NetworkError -> {}
+        when (errorType) {
+            is ErrorEvent.ServerError -> {
+                Toast.makeText(
+                    requireContext(),
+                    resources.getString(R.string.server_error),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            is ErrorEvent.NetworkError -> {
+                Toast.makeText(
+                    requireContext(),
+                    resources.getString(R.string.network_error),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
@@ -140,9 +155,42 @@ class MainFragment : Fragment() {
     private fun initButton() {
         val button = binding.buttonConvert
         button.setOnClickListener {
-            amount = binding.amountTI.text.toString().toDouble()
-            viewModel.conversion(baseCurrency, currency, amount)
+            if (isValidForm()) {
+                amount = binding.amountTI.text.toString().toDouble()
+                viewModel.conversion(baseCurrency, currency, amount)
+            }
         }
+    }
+
+    private fun isValidForm(): Boolean {
+        var isValid = true
+
+        val amountText = binding.amountTI.text.toString()
+        if (amountText.isBlank()) {
+            binding.amountTF.error = resources.getString(R.string.error_blank_field)
+            isValid = false
+        } else if (!checkNumberFormat(amountText)) {
+            binding.amountTF.error = resources.getString(R.string.error_invalid_input)
+            isValid = false
+        } else {
+            binding.amountTF.error = null
+        }
+
+        if (currency.isBlank()) {
+            binding.currencyTF.error = resources.getString(R.string.error_blank_field)
+            isValid = false
+        } else {
+            binding.currencyTF.error = null
+        }
+
+        if (baseCurrency.isBlank()) {
+            binding.currencyBaseTF.error = resources.getString(R.string.error_blank_field)
+            isValid = false
+        } else {
+            binding.currencyBaseTF.error = null
+        }
+
+        return isValid
     }
 
     private fun addFragment(fragment: Fragment) {

@@ -6,12 +6,29 @@
     <string name="title">ВалютКонвертер</string>
     <string name="tools_text_amount">1000000</string>
     <string name="tools_text_code">RUB</string>
+    <string name="helper_text">Обязательное поле*</string>
+
+    <string name="text_date">*Дата последнего обновления данных: %s. </string>
+
+    <string name="error_blank_field">Обязательное поле*</string>
+    <string name="error_invalid_input">Некорректный ввод</string>
+
+    <string name="server_error">Произошла ошибка на сервере! Попробуйте попозже.</string>
+    <string name="network_error">Произошла ошибка! Проверьте подключение к сети.</string>
 
 
     <string-array name="currency">
-        <item>USD</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>CNY</item>
         <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>NZD</item>
         <item>RUB</item>
+        <item>SEK</item>
+        <item>USD</item>
     </string-array>
 
 </resources>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.currencyconversionapp.R
 import com.example.currencyconversionapp.data.mapper.CurrencyConversionParcelableModel
 import com.example.currencyconversionapp.data.mapper.toEntity
 import com.example.currencyconversionapp.data.mapper.toParcelableModel
@@ -23,7 +24,8 @@ class CurrencyConversionFragment : Fragment() {
     private fun parseArguments() {
         val args = requireArguments()
         if (args.containsKey(CURRENCY)) {
-            _currencyConversion = (args.getParcelable(CURRENCY) as? CurrencyConversionParcelableModel)?.toEntity()
+            _currencyConversion =
+                (args.getParcelable(CURRENCY) as? CurrencyConversionParcelableModel)?.toEntity()
         } else {
             throw RuntimeException("Currency conversion argument is absent")
         }
@@ -51,8 +53,11 @@ class CurrencyConversionFragment : Fragment() {
     private fun initView() {
         binding.fromAmountText.text = currencyConversion.amount.toString()
         binding.fromCodeText.text = currencyConversion.from
-        binding.toAmountText.text = currencyConversion.result.toString()
+        binding.toAmountText.text =
+            String.format("%.3f", currencyConversion.result).replace(",", ".")
         binding.toCodeText.text = currencyConversion.to
+        binding.textDate.text =
+            String.format(resources.getString(R.string.text_date), currencyConversion.date)
     }
 
     override fun onDestroy() {

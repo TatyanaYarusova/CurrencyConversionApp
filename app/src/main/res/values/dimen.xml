@@ -4,6 +4,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="ts">20sp</dimen>
+    <dimen name="ts_small">16sp</dimen>
 
 
 <!--    Button  -->
@@ -15,7 +16,7 @@
     <dimen name="divider_h">2dp</dimen>
 
 <!--    main fragment   -->
-    <dimen name="drop_down_h">150dp</dimen>
+    <dimen name="drop_down_h">170dp</dimen>
 
     <dimen name="tz_button">20sp</dimen>
 

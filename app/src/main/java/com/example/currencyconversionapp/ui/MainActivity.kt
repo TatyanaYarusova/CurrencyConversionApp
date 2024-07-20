@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        addFragment(MainFragment.newInstance())
+        if (savedInstanceState == null) {
+            addFragment(MainFragment.newInstance())
+        }
     }
 
     private fun addFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, fragment)
-            .addToBackStack(null)
             .commit()
     }
 }

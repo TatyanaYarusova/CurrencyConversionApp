@@ -64,9 +64,15 @@ dependencies {
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
-    //Test
+    //Test junit
     testImplementation(libs.junit.api)
     testImplementation(libs.junit.params)
     testRuntimeOnly(libs.junit.engine)
 
+    //Mockito
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.jupiter)
+
+    //Coroutine test
+    testImplementation(libs.coroutines.test)
 }

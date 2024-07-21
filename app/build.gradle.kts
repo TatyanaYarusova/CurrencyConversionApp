@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.junit)
 }
 
 android {
@@ -62,4 +63,16 @@ dependencies {
     //Dagger 2
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
+
+    //Test junit
+    testImplementation(libs.junit.api)
+    testImplementation(libs.junit.params)
+    testRuntimeOnly(libs.junit.engine)
+
+    //Mockito
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.jupiter)
+
+    //Coroutine test
+    testImplementation(libs.coroutines.test)
 }

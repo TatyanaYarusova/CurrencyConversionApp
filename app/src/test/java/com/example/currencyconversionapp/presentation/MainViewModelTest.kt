@@ -45,7 +45,7 @@ class MainViewModelTest {
             to = to,
             from = from,
             amount = amount,
-            date = "2024-07-18T23:59:59Z",
+            date = "18.07.2024 23:59",
             result = 100.0
         )
 

@@ -17,7 +17,7 @@ class CurrencyRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val ioDispatcher: CoroutineDispatcher,
     private val key: String
-): CurrencyRepository {
+) : CurrencyRepository {
 
     override suspend fun conversion(
         from: String,
@@ -31,7 +31,8 @@ class CurrencyRepositoryImpl @Inject constructor(
                 return@withContext exceptionRequest(e)
             }
             return@withContext if (response.isSuccessful) {
-                val currencyConversion = response.body() ?: throw RuntimeException("Response body is null")
+                val currencyConversion =
+                    response.body() ?: throw RuntimeException("Response body is null")
                 RequestResult.Success(currencyConversion.toEntity(amount, from))
             } else when (val code = response.code()) {
                 in 500..599 -> RequestResult.Error(RequestError.ServerError)

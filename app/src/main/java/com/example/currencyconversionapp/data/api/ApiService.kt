@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("latest")
-    suspend fun getCurrencyRate (
+    suspend fun getCurrencyRate(
         @Header("apikey") apiKey: String,
         @Query(QUERY_FROM) from: String,
         @Query(QUERY_TO) to: String,

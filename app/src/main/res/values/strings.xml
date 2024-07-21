@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CurrencyConversionApp</string>
     <string name="amountTF_hint">Введите сумму</string>
+    <string name="currency_baseTF_hint">Выберите базовую валюту</string>
     <string name="currencyTF_hint">Выберите валюту для конвертации</string>
     <string name="text_convert_button">Конвертировать</string>
     <string name="title">ВалютКонвертер</string>

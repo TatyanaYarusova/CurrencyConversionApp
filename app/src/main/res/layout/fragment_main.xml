@@ -31,7 +31,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
 
-                    android:hint="@string/currencyTF_hint"
+                    android:hint="@string/currency_baseTF_hint"
 
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
 
